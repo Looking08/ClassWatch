@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- OPPO Watch X3 国行跑的是 ColorOS Watch（基于 Android 11，API 30），
+         机器上并没有 com.google.android.wearable 共享库，也没有
+         android.hardware.type.watch / leanback 这些 feature。
+         所以这里一律声明成 required=false，否则系统会直接拒绝安装。
+         若将来换成真正的 Wear OS 手表，再把 Tile service 加回来。 -->
+    <uses-feature
+        android:name="android.hardware.type.watch"
+        android:required="false" />
+
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+
+    <!-- 局域网同步：手表端开 TCP 服务接收手机推送，必须要有联网权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:roundIcon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.ClassWatch.NoActionBar">
+
+        <!-- 主界面：今日课表 -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.ClassWatch.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 临时诊断页：在真机上抓表冠 / 侧键的输入事件类型，
+             确定 OPPO 的 rotary 协议后就删掉。用法见 README 10.5 -->
+        <activity
+            android:name=".ui.InputProbeActivity"
+            android:exported="true"
+            android:label="@string/probe_label"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Theme.ClassWatch.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

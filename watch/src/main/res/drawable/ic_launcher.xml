@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="432dp"
+    android:height="432dp"
+    android:viewportWidth="432"
+    android:viewportHeight="432">
+
+    <!-- 表盘底 -->
+    <path
+        android:fillColor="#12141A"
+        android:pathData="M0,0h432v432h-432z" />
+
+    <!-- 顶部进度条：代表当前这节课的进度 -->
+    <path
+        android:fillColor="#5B8CFF"
+        android:pathData="M96,132h168a8,8 0,0 1,8 8v8a8,8 0,0 1,-8 8h-168a8,8 0,0 1,-8 -8v-8a8,8 0,0 1,8 -8z" />
+
+    <!-- 课程名占位条 -->
+    <path
+        android:fillColor="#3A4152"
+        android:pathData="M96,188h120a8,8 0,0 1,8 8v8a8,8 0,0 1,-8 8h-120a8,8 0,0 1,-8 -8v-8a8,8 0,0 1,8 -8z" />
+    <path
+        android:fillColor="#2A2E39"
+        android:pathData="M96,236h168a8,8 0,0 1,8 8v6a8,8 0,0 1,-8 8h-168a8,8 0,0 1,-8 -8v-6a8,8 0,0 1,8 -8z" />
+    <path
+        android:fillColor="#2A2E39"
+        android:pathData="M96,278h140a8,8 0,0 1,8 8v6a8,8 0,0 1,-8 8h-140a8,8 0,0 1,-8 -8v-6a8,8 0,0 1,8 -8z" />
+</vector>
